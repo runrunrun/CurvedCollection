@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CurvedCollection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2AO-nv-PmJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewLayout key="collectionViewLayout" id="QUk-Kv-e4S" customClass="CurvedFlowLayout" customModule="CurvedCollection" customModuleProvider="target"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BasicCell" id="gNy-Hr-5xL" customClass="BasicCell" customModule="CurvedCollection" customModuleProvider="target">
+                                        <rect key="frame" x="-0.5" y="0.0" width="376" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="71"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nvJ-nl-xej">
+                                                    <rect key="frame" x="12" y="10.5" width="60" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="D4K-iZ-dkx"/>
+                                                        <constraint firstAttribute="width" constant="60" id="tRn-9V-bOd"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSP-J1-7jI">
+                                                    <rect key="frame" x="96" y="10.5" width="79" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.015686274510000001" green="0.87058823529999996" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="nvJ-nl-xej" firstAttribute="centerY" secondItem="gNy-Hr-5xL" secondAttribute="centerY" id="DSy-lb-4c9"/>
+                                            <constraint firstItem="wSP-J1-7jI" firstAttribute="top" secondItem="nvJ-nl-xej" secondAttribute="top" id="HK7-Av-gbj"/>
+                                            <constraint firstItem="nvJ-nl-xej" firstAttribute="leading" secondItem="gNy-Hr-5xL" secondAttribute="leadingMargin" constant="12" id="KTf-3M-tED"/>
+                                            <constraint firstItem="wSP-J1-7jI" firstAttribute="leading" secondItem="nvJ-nl-xej" secondAttribute="trailing" constant="24" id="qef-9N-0OB"/>
+                                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="wSP-J1-7jI" secondAttribute="trailing" constant="20" id="xZa-dE-Ezl"/>
+                                        </constraints>
+                                        <size key="customSize" width="376" height="71"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="nvJ-nl-xej" id="rA0-Sh-weW"/>
+                                            <outlet property="titleLabel" destination="wSP-J1-7jI" id="O8G-9c-x2a"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="ugG-jI-c8S"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="FIg-tM-QuP"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2AO-nv-PmJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZcQ-ZZ-YC9"/>
+                            <constraint firstItem="2AO-nv-PmJ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="k6J-uq-mbh"/>
+                            <constraint firstItem="2AO-nv-PmJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="oUF-Zs-tTT"/>
+                            <constraint firstItem="2AO-nv-PmJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="z2L-Xa-Vsr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="2AO-nv-PmJ" id="SgP-8b-IO3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+</document>
