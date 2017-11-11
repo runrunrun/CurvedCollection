@@ -17,6 +17,7 @@ class CurvedFlowLayout: UICollectionViewFlowLayout {
     
     override func prepare() {
         super.prepare()
+        
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -24,24 +25,49 @@ class CurvedFlowLayout: UICollectionViewFlowLayout {
             return nil
         }
         
+        guard let collectionView = collectionView else {
+            return nil
+        }
+    
+        let contentOffset = collectionView.contentOffset
+        let minVisibleCellY = contentOffset.y + 20
+        let maxVisibleCellY = contentOffset.y + collectionView.bounds.height
+        
         var newLayoutAttributes: [UICollectionViewLayoutAttributes] = []
         // Modify attributes
-        for (index, itemAttributes) in elementsAttributes.enumerated() {
+        var index = 0
+        for (_, itemAttributes) in elementsAttributes.enumerated() {
             let attributes = itemAttributes
+            
+            // Check if attribute is visible rect.
+            if attributes.frame.minY < minVisibleCellY || attributes.frame.minY > maxVisibleCellY {
+                // No modifications required.
+                newLayoutAttributes.append(attributes)
+                continue
+            }
+            
             var size = attributes.size
-            size.width = size.width - CGFloat(index*10)
+            size.width = size.width - CGFloat(index*5)
             attributes.size = size
             newLayoutAttributes.append(attributes)
+            index += 1
         }
         
         return newLayoutAttributes
     }
     
-//    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-//        var attribute = super.layoutAttributesForItem(at: indexPath)
-//
-//        // Modify attribute
-//
-//        return attribute
-//    }
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        var attribute = super.layoutAttributesForItem(at: indexPath)
+
+//        collectionView?.indexPathsForVisibleItems
+        
+        // Modify attribute
+
+        return attribute
+    }
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
+    }
+    
 }
