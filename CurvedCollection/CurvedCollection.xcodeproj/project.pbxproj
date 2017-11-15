@@ -14,6 +14,7 @@
 		1EA295871FB630B500481F15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EA295851FB630B500481F15 /* LaunchScreen.storyboard */; };
 		1EA295911FB692A800481F15 /* CurvedFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA295901FB692A800481F15 /* CurvedFlowLayout.swift */; };
 		1EA295931FB6A38000481F15 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA295921FB6A38000481F15 /* BasicCell.swift */; };
+		1EECA8F31FBC8F1E00A06B6F /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EECA8F21FBC8F1E00A06B6F /* FlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		1EA295881FB630B500481F15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EA295901FB692A800481F15 /* CurvedFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedFlowLayout.swift; sourceTree = "<group>"; };
 		1EA295921FB6A38000481F15 /* BasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
+		1EECA8F21FBC8F1E00A06B6F /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				1EA295831FB630B500481F15 /* Assets.xcassets */,
 				1EA295851FB630B500481F15 /* LaunchScreen.storyboard */,
 				1EA295881FB630B500481F15 /* Info.plist */,
+				1EECA8F21FBC8F1E00A06B6F /* FlowLayout.swift */,
 			);
 			path = CurvedCollection;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			files = (
 				1EA295931FB6A38000481F15 /* BasicCell.swift in Sources */,
 				1EA2957F1FB630B500481F15 /* ViewController.swift in Sources */,
+				1EECA8F31FBC8F1E00A06B6F /* FlowLayout.swift in Sources */,
 				1EA295911FB692A800481F15 /* CurvedFlowLayout.swift in Sources */,
 				1EA2957D1FB630B500481F15 /* AppDelegate.swift in Sources */,
 			);
