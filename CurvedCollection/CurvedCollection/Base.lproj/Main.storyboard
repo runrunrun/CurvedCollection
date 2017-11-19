@@ -21,7 +21,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2AO-nv-PmJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewLayout key="collectionViewLayout" id="QUk-Kv-e4S" customClass="CurvedFlowLayout" customModule="CurvedCollection" customModuleProvider="target"/>
+                                <collectionViewLayout key="collectionViewLayout" id="QUk-Kv-e4S" customClass="AnimatorFlowLayout" customModule="CurvedCollection" customModuleProvider="target"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BasicCell" id="gNy-Hr-5xL" customClass="BasicCell" customModule="CurvedCollection" customModuleProvider="target">
                                         <rect key="frame" x="-0.5" y="0.0" width="376" height="71"/>

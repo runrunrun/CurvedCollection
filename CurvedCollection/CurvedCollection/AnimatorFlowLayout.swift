@@ -1,19 +1,14 @@
 //
-//  CurvedFlowLayout.swift
-//  CurvedFlowLayout
+//  AnimatorFlowLayout.swift
+//  CurvedCollection
 //
-//  Created by Hari Kunwar on 11/10/17.
+//  Created by Hari Kunwar on 11/19/17.
 //  Copyright © 2017 Learning. All rights reserved.
 //
 
 import UIKit
 
-enum Curve {
-    case ellipse
-    case hyperbola
-}
-
-class CurvedFlowLayout: UICollectionViewFlowLayout {
+class AnimatorFlowLayout: UICollectionViewFlowLayout {
     
     private lazy var animator: UIDynamicAnimator = UIDynamicAnimator(collectionViewLayout: self)
     private var visibleIndexPaths: Set<IndexPath> = []
@@ -30,12 +25,12 @@ class CurvedFlowLayout: UICollectionViewFlowLayout {
         guard let currentlyVisibleLayoutItems: [UICollectionViewLayoutAttributes] = super.layoutAttributesForElements(in: visibleRect) else {
             return
         }
-
+        
         // Get visible indexPaths
         let currentlyVisibleIndexPaths = currentlyVisibleLayoutItems.map {
             return $0.indexPath
         }
-
+        
         // Remove behaviors that are not visible.
         animator.removeHiddenBehaviors(for: currentlyVisibleIndexPaths)
         
@@ -78,7 +73,7 @@ class CurvedFlowLayout: UICollectionViewFlowLayout {
         guard let collectionView = collectionView else {
             return false
         }
-                
+        
         animator.behaviors.forEach {
             guard let behavior = $0 as? UIAttachmentBehavior else {
                 return
@@ -94,7 +89,7 @@ class CurvedFlowLayout: UICollectionViewFlowLayout {
             animator.updateItem(usingCurrentState: item)
         }
         
-        return collectionView.bounds.width != newBounds.width
+        return true
     }
     
 }
