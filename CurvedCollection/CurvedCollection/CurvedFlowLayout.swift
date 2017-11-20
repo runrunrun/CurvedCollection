@@ -8,9 +8,9 @@
 
 import UIKit
 
-enum Curve {
-    case ellipse
-    case hyperbola
+enum Shape {
+    case rhombus
+    case isoscelesTrapezoid
 }
 
 class CurvedFlowLayout: UICollectionViewFlowLayout {
@@ -20,24 +20,13 @@ class CurvedFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        guard let elementsAttributes = super.layoutAttributesForElements(in: rect) else {
+        guard let layoutAttributes = super.layoutAttributesForElements(in: rect) else {
             return nil
         }
         
-        guard let collectionView = collectionView else {
-            return nil
-        }
-    
-        var newLayoutAttributes: [UICollectionViewLayoutAttributes] = []
+        let attributes = shapedAttributes(layoutAttributes, shape: .isoscelesTrapezoid)
         
-        for item in elementsAttributes {
-            let offsetYPercent = (item.frame.minY - collectionView.bounds.minY)/collectionView.bounds.height
-            item.size.width = collectionView.bounds.width - collectionView.bounds.width*offsetYPercent/6
-            
-            newLayoutAttributes.append(item)
-        }
-        
-        return newLayoutAttributes
+        return attributes
     }
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -48,6 +37,47 @@ class CurvedFlowLayout: UICollectionViewFlowLayout {
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
-    
 }
+
+extension UICollectionViewFlowLayout {
+    
+    func shapedAttributes(_ layoutAttributes: [UICollectionViewLayoutAttributes], shape: Shape) -> [UICollectionViewLayoutAttributes] {
+        let attributes: [UICollectionViewLayoutAttributes]
+        switch shape {
+        case .isoscelesTrapezoid:
+            attributes = isoscelesTrapezoid(layoutAttributes)
+        case .rhombus:
+            attributes = []
+            break
+        }
+        
+        return attributes
+    }
+    
+    func isoscelesTrapezoid(_ layoutAttributes: [UICollectionViewLayoutAttributes], inverted: Bool = true) -> [UICollectionViewLayoutAttributes] {
+        
+        guard let collectionView = self.collectionView else {
+            return []
+        }
+        
+        var newLayoutAttributes: [UICollectionViewLayoutAttributes] = []
+        
+        for item in layoutAttributes {
+            // Range 0 - 1
+            let offsetRatio = (item.frame.minY - collectionView.bounds.minY)/collectionView.bounds.height
+            
+            // Range 0 - 1/n
+            let n: CGFloat = 6
+            let offsetRatioByN = 1 - offsetRatio/n
+            
+            // item.size.width = collectionView.bounds.width - collectionView.bounds.width*offsetRatioByN
+            item.transform = CGAffineTransform(scaleX: offsetRatioByN, y: 1)
+            
+            newLayoutAttributes.append(item)
+        }
+        
+        return newLayoutAttributes
+    }
+}
+
 
