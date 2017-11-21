@@ -24,7 +24,7 @@ class CurvedFlowLayout: UICollectionViewFlowLayout {
             return nil
         }
         
-        let attributes = shapedAttributes(layoutAttributes, shape: .isoscelesTrapezoid)
+        let attributes = shapedAttributes(layoutAttributes, shape: .rhombus)
         
         return attributes
     }
@@ -47,15 +47,39 @@ extension UICollectionViewFlowLayout {
         case .isoscelesTrapezoid:
             attributes = isoscelesTrapezoid(layoutAttributes)
         case .rhombus:
-            attributes = []
+            attributes = rhombus(layoutAttributes)
             break
         }
         
         return attributes
     }
     
-    func isoscelesTrapezoid(_ layoutAttributes: [UICollectionViewLayoutAttributes], inverted: Bool = true) -> [UICollectionViewLayoutAttributes] {
+    func rhombus(_ layoutAttributes: [UICollectionViewLayoutAttributes]) -> [UICollectionViewLayoutAttributes] {
+        guard let collectionView = self.collectionView else {
+            return []
+        }
         
+        var newLayoutAttributes: [UICollectionViewLayoutAttributes] = []
+        
+        let collectionViewHeight = collectionView.bounds.height
+        
+        for item in layoutAttributes {
+            // Range 1...0...1
+            let offsetRatio = fabs((item.frame.minY - collectionView.bounds.midY)/collectionViewHeight)
+            
+            // Range 0 - 1/n
+            let n: CGFloat = 4
+            let offsetRatioByN = 1 - offsetRatio/n
+            
+            item.transform = CGAffineTransform(scaleX: offsetRatioByN, y: 1)
+            
+            newLayoutAttributes.append(item)
+        }
+        
+        return newLayoutAttributes
+    }
+
+    func isoscelesTrapezoid(_ layoutAttributes: [UICollectionViewLayoutAttributes], inverted: Bool = true) -> [UICollectionViewLayoutAttributes] {
         guard let collectionView = self.collectionView else {
             return []
         }
@@ -64,13 +88,12 @@ extension UICollectionViewFlowLayout {
         
         for item in layoutAttributes {
             // Range 0 - 1
-            let offsetRatio = (item.frame.minY - collectionView.bounds.minY)/collectionView.bounds.height
+            let offsetRatio = (item.frame.minY - collectionView.bounds.minY) / collectionView.bounds.height
             
             // Range 0 - 1/n
             let n: CGFloat = 6
-            let offsetRatioByN = 1 - offsetRatio/n
+            let offsetRatioByN = 1 - offsetRatio / n
             
-            // item.size.width = collectionView.bounds.width - collectionView.bounds.width*offsetRatioByN
             item.transform = CGAffineTransform(scaleX: offsetRatioByN, y: 1)
             
             newLayoutAttributes.append(item)
@@ -79,5 +102,4 @@ extension UICollectionViewFlowLayout {
         return newLayoutAttributes
     }
 }
-
 
