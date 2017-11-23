@@ -11,35 +11,35 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: CurvedFlowLayout!
+    var scenicImages: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Add images
+        for index in 1...15 {
+            let imageName = "\(index)"
+            scenicImages.append(imageName)
+        }
         
         // Setup layout shape and curve
         flowLayout.curveDampner = 6
-        flowLayout.shape = .isoscelesTrapezoid
+        flowLayout.shape = .concave
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-}
-
-extension ViewController: UICollectionViewDelegate {
-    
 }
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return scenicImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BasicCell", for: indexPath) as! BasicCell
-        cell.titleLabel.text = "Cell number is \(indexPath.item)"
+        
+        let cellIndex = indexPath.item
+        if scenicImages.count > cellIndex {
+            cell.imageView.image = UIImage(named: scenicImages[cellIndex])
+        }
         return cell
     }
     
