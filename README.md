@@ -20,4 +20,15 @@ Copy CurvedFlowLayout.swift to your project.
         flowLayout.shape = .convex
         ...
      }
+     
+## Demo Gifs
+### Convex
+![demo](/ScreenShots/Convex-small.gif)
+
+### Concave
+![demo](/ScreenShots/Concave-small.gif)
+
+### Trapezoid
+![demo](/ScreenShots/Trapezoid-small.gif)
+
 
