@@ -10,10 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var flowLayout: CurvedFlowLayout!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Setup layout shape and curve
+        flowLayout.curveDampner = 6
+        flowLayout.shape = .isoscelesTrapezoid
     }
 
     override func didReceiveMemoryWarning() {

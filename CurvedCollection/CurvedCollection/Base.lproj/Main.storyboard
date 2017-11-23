@@ -77,6 +77,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="2AO-nv-PmJ" id="SgP-8b-IO3"/>
+                        <outlet property="flowLayout" destination="QUk-Kv-e4S" id="ZDG-dh-5yk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
