@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         
         // Setup layout shape and curve
         flowLayout.curveDampner = 6
-        flowLayout.shape = .concave
+        flowLayout.shape = .isoscelesTrapezoid
     }
 }
 
